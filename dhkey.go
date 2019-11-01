@@ -59,6 +59,13 @@ func NewPublicKey(s []byte) *DHKey {
 	return key
 }
 
+// NewPublicKeyStr from a 10-based string
+func NewPublicKeyStr(s10 string) (key *DHKey, ok bool) {
+	key = new(DHKey)
+	key.y, ok = new(big.Int).SetString(s10, 10)
+	return key, ok
+}
+
 // copyWithLeftPad copies src to the end of dest, padding with zero bytes as
 // needed.
 func copyWithLeftPad(dest, src []byte) {
